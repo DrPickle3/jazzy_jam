@@ -1,0 +1,5 @@
+﻿<Solution>
+  <Project Path="com.unity.template.multiplayer-ngo.runtime.csproj" />
+  <Project Path="com.unity.template.multiplayer-ngo.editor.csproj" />
+  <Project Path="com.unity.template.multiplayer-ngo.shared.csproj" />
+</Solution>
