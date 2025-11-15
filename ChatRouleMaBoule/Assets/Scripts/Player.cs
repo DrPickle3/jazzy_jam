@@ -6,8 +6,10 @@ public class Player : MonoBehaviour
 {
     private InputActions _inputActions;
     private GameObject _boule;
-    private GameObject _camera;
     private Animator _catAnimator;
+    private Rigidbody _rb;
+    private Vector3 _frwd;
+    private float _currentSpeed;
     
     private float SPEED = 1f;
     private float RUNNING_SPEED = 5f;
@@ -20,9 +22,8 @@ public class Player : MonoBehaviour
     public void Start()
     {
         _inputActions.Enable();
-        _boule = GameObject.FindWithTag("Boule");
-        _catAnimator = gameObject.GetComponentInChildren<Animator>();
-
+        _catAnimator = GameObject.FindWithTag("Cat").GetComponent<Animator>();
+        _rb = GetComponent<Rigidbody>();
     }
     public void Update()
     {
@@ -30,19 +31,28 @@ public class Player : MonoBehaviour
         bool isRunning = _inputActions.Player.Sprint.IsPressed();
         curMoveInput.Normalize();
 
-        var speed = isRunning ? RUNNING_SPEED : SPEED;
-        var move = curMoveInput * speed * Time.deltaTime;
-        var forward = new Vector3(move.x, 0, move.y);
-        gameObject.transform.position += forward;
         _catAnimator.SetBool("isRunning", isRunning);
         _catAnimator.SetBool("isMoving", false);
 
-        if (math.lengthsq(forward) > float.Epsilon)
+        if (math.lengthsq(curMoveInput) > float.Epsilon)
         {
-            if(!isRunning)
-                _catAnimator.SetBool("isMoving", true);
+            _currentSpeed = isRunning ? RUNNING_SPEED : SPEED;
+            var move = curMoveInput * (_currentSpeed * Time.deltaTime);
+            var forward = new Vector3(move.y, 0, -move.x);
             
-            _boule.transform.rotation = Quaternion.LookRotation(forward, math.up());
+            Vector3 cameraForward = Camera.main.transform.forward;
+            Vector3 flattened = Vector3.ProjectOnPlane(cameraForward, Vector3.up);
+            Quaternion cameraOrientation = Quaternion.LookRotation(flattened);
+
+            _frwd = cameraOrientation * forward;
+            transform.position += _frwd;
+            
+            _catAnimator.SetBool("isMoving", true);
         }
+    }
+
+    public void FixedUpdate()
+    {
+        _rb.AddTorque(_frwd * (10000 * _currentSpeed));
     }
 }
