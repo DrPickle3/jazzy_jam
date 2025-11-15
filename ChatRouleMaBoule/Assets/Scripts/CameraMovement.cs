@@ -1,28 +1,41 @@
-﻿using UnityEngine;
+﻿using Unity.Mathematics;
+using UnityEngine;
 
-namespace DefaultNamespace
+public class CameraMovement : MonoBehaviour
 {
-    
-    public class CameraMovement : MonoBehaviour
+    private Vector3 offset;
+    public Transform player;
+    [Range(0f, 10f)]
+    public float turnSpeed;
+
+    private InputActions _actions;
+    private Vector2 _oldAngle;
+
+    private void Awake()
     {
-        private InputActions _inputActions;
+        _oldAngle = Vector2.zero;
+        _actions = new InputActions();
+    }
+
+    private void Start()
+    {
+        _actions.Enable();
+        transform.position += new Vector3(0, 3, 0);
+        offset = transform.position - player.position;
+    }
+
+    private void LateUpdate()
+    {
+        var mouse = _actions.Player.Look.ReadValue<Vector2>();
         
-        public void Awake()
-        {
-            _inputActions = new InputActions();
-        }
+        _oldAngle = new Vector2(_oldAngle.x + mouse.x * turnSpeed,
+            math.clamp(_oldAngle.y - mouse.y * turnSpeed, -65, 45));
 
-        public float followSpeed = 5f;
+        var quat =
+            Quaternion.AngleAxis(_oldAngle.x, Vector3.up) *
+            Quaternion.AngleAxis(_oldAngle.y, Vector3.right);
 
-        void Update()
-        {
-            Vector3 mouseScreenPosition = Input.mousePosition;
-
-            mouseScreenPosition.z = Camera.main.WorldToScreenPoint(transform.position).z; 
-            Vector3 targetWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
-
-            Vector3 newCameraPosition = Vector3.Lerp(transform.position, targetWorldPosition, followSpeed * Time.deltaTime);
-            transform.position = new Vector3(newCameraPosition.x, newCameraPosition.y, transform.position.z);
-        }
+        transform.position = player.position + quat * offset;
+        transform.LookAt(player.position);
     }
 }

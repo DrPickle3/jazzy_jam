@@ -16,14 +16,18 @@ namespace DefaultNamespace
         }
 
         // Update is called once per frame
-        void Update()
+        void LateUpdate()
         {
             var boolTransform = _bouleToFollow.transform;
 
-            transform.position = boolTransform.position + offset;
 
             if(gameObject == Camera.main.gameObject)
-                transform.LookAt(boolTransform.position);
+            {}
+                //transform.LookAt(boolTransform.position);
+            else
+            {
+                transform.position = boolTransform.position + offset;
+            }
         }
     }
 }

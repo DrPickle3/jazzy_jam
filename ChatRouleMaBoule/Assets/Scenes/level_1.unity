@@ -491,9 +491,17 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8093308060271837828, guid: e66e5ba8eaa46914fbcc0f2fdc85a08b, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1502494709}
+    - target: {fileID: 8093308060271837828, guid: e66e5ba8eaa46914fbcc0f2fdc85a08b, type: 3}
       propertyPath: PlayerPos
       value: 
       objectReference: {fileID: 1502494709}
+    - target: {fileID: 8093308060271837828, guid: e66e5ba8eaa46914fbcc0f2fdc85a08b, type: 3}
+      propertyPath: turnSpeed
+      value: 0.78
+      objectReference: {fileID: 0}
     - target: {fileID: 8093308060271837828, guid: e66e5ba8eaa46914fbcc0f2fdc85a08b, type: 3}
       propertyPath: playerBody
       value: 
