@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private Rigidbody _rb;
     private Vector3 _frwd;
     private float _currentSpeed;
+    public Quaternion _oldQuat;
     
     private float SPEED = 1f;
     private float RUNNING_SPEED = 5f;
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
         _cat = GameObject.FindWithTag("Cat");
         _catAnimator = _cat.GetComponent<Animator>();
         _rb = GetComponent<Rigidbody>();
+        _oldQuat = Quaternion.identity;
     }
     public void Update()
     {
@@ -52,14 +54,14 @@ public class Player : MonoBehaviour
             transform.position += _frwd;
 
             var frwdWorld = transform.TransformDirection(_frwd);
-            UnityEngine.Debug.DrawRay(gameObject.transform.position, frwdWorld  * 100, UnityEngine.Color.magenta, 2f);
-            _cat.transform.rotation = Quaternion.LookRotation( new Vector3(0-_frwd.z, 0, _frwd.x));
+            _oldQuat = math.slerp(_oldQuat, Quaternion.LookRotation( new Vector3(0-_frwd.z, 0, _frwd.x)), 0.3f);
+            _cat.transform.rotation = _oldQuat;
             _catAnimator.SetBool("isMoving", true);
         }
 
         if (transform.position.y < -1)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().handle);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
