@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private InputActions _inputActions;
-    private GameObject _boule;
+    private GameObject _cat;
     private Animator _catAnimator;
     private Rigidbody _rb;
     private Vector3 _frwd;
@@ -22,7 +22,8 @@ public class Player : MonoBehaviour
     public void Start()
     {
         _inputActions.Enable();
-        _catAnimator = GameObject.FindWithTag("Cat").GetComponent<Animator>();
+        _cat = GameObject.FindWithTag("Cat");
+        _catAnimator = _cat.GetComponent<Animator>();
         _rb = GetComponent<Rigidbody>();
     }
     public void Update()
@@ -30,6 +31,8 @@ public class Player : MonoBehaviour
         Vector2 curMoveInput = _inputActions.Player.Move.ReadValue<Vector2>();
         bool isRunning = _inputActions.Player.Sprint.IsPressed();
         curMoveInput.Normalize();
+        
+        _frwd = Vector3.zero;
 
         _catAnimator.SetBool("isRunning", isRunning);
         _catAnimator.SetBool("isMoving", false);
@@ -46,7 +49,10 @@ public class Player : MonoBehaviour
 
             _frwd = cameraOrientation * forward;
             transform.position += _frwd;
-            
+
+            var frwdWorld = transform.TransformDirection(_frwd);
+            UnityEngine.Debug.DrawRay(gameObject.transform.position, frwdWorld  * 100, UnityEngine.Color.magenta, 2f);
+            _cat.transform.rotation = Quaternion.LookRotation( new Vector3(0-_frwd.z, 0, _frwd.x));
             _catAnimator.SetBool("isMoving", true);
         }
     }
