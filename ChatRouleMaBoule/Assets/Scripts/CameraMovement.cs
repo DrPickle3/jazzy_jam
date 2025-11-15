@@ -26,9 +26,6 @@ public class CameraMovement : MonoBehaviour
 
     private void LateUpdate()
     {
-
-        var oldPos = transform.position;
-
         var mouse = _actions.Player.Look.ReadValue<Vector2>();
         
         _oldAngle = new Vector2(_oldAngle.x + mouse.x * turnSpeed,
@@ -42,7 +39,7 @@ public class CameraMovement : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(player.position - transform.position, Vector3.up);
         
         Vector3 pos = transform.position;
-        Ray ray = new Ray(player.position, oldPos - player.position);
+        Ray ray = new Ray(player.position, transform.position - player.position);
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
             if (math.length(hit.point - player.position) < math.length(transform.position - player.position))
