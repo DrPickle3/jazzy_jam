@@ -468,6 +468,16 @@ MonoBehaviour:
   m_ObsoleteUseShadowQualitySettings: 0
   m_ObsoleteCustomShadowResolution: 512
   m_ObsoleteContactShadows: 0
+--- !u!4 &1502494709 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9040399102473427865, guid: e66e5ba8eaa46914fbcc0f2fdc85a08b, type: 3}
+  m_PrefabInstance: {fileID: 863330326081963696}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1702713338 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6970937638762999173, guid: e66e5ba8eaa46914fbcc0f2fdc85a08b, type: 3}
+  m_PrefabInstance: {fileID: 863330326081963696}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &863330326081963696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -480,6 +490,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8093308060271837828, guid: e66e5ba8eaa46914fbcc0f2fdc85a08b, type: 3}
+      propertyPath: PlayerPos
+      value: 
+      objectReference: {fileID: 1502494709}
+    - target: {fileID: 8093308060271837828, guid: e66e5ba8eaa46914fbcc0f2fdc85a08b, type: 3}
+      propertyPath: playerBody
+      value: 
+      objectReference: {fileID: 1702713338}
     - target: {fileID: 8428487245756648919, guid: e66e5ba8eaa46914fbcc0f2fdc85a08b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
