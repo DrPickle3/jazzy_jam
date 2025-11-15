@@ -29,13 +29,16 @@ public class CameraMovement : MonoBehaviour
         var mouse = _actions.Player.Look.ReadValue<Vector2>();
         
         _oldAngle = new Vector2(_oldAngle.x + mouse.x * turnSpeed,
-            math.clamp(_oldAngle.y - mouse.y * turnSpeed, -65, 45));
+            math.clamp(_oldAngle.y - mouse.y * turnSpeed, -65, 20));
 
         var quat =
             Quaternion.AngleAxis(_oldAngle.x, Vector3.up) *
             Quaternion.AngleAxis(_oldAngle.y, Vector3.right);
 
         transform.position = player.position + quat * offset;
-        transform.LookAt(player.position);
+        //transform.LookAt(player.position);
+
+        var save = transform.rotation.y;
+        transform.rotation = Quaternion.LookRotation(player.position - transform.position, Vector3.up);
     }
 }

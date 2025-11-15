@@ -1,6 +1,7 @@
 using System;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -54,6 +55,11 @@ public class Player : MonoBehaviour
             UnityEngine.Debug.DrawRay(gameObject.transform.position, frwdWorld  * 100, UnityEngine.Color.magenta, 2f);
             _cat.transform.rotation = Quaternion.LookRotation( new Vector3(0-_frwd.z, 0, _frwd.x));
             _catAnimator.SetBool("isMoving", true);
+        }
+
+        if (transform.position.y < -1)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().handle);
         }
     }
 
