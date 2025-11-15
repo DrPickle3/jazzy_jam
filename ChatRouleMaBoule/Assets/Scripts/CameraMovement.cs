@@ -41,4 +41,9 @@ public class CameraMovement : MonoBehaviour
         var save = transform.rotation.y;
         transform.rotation = Quaternion.LookRotation(player.position - transform.position, Vector3.up);
     }
+    
+    public void OnDestroy()
+    {
+        _actions.Disable();
+    }
 }
