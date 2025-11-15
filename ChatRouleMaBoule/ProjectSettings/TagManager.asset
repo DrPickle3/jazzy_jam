@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Boule
+  - Cat
   layers:
   - Default
   - TransparentFX
