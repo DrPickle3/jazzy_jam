@@ -5046,7 +5046,7 @@ GameObject:
   - component: {fileID: 716023896}
   - component: {fileID: 716023895}
   m_Layer: 0
-  m_Name: SubStep1
+  m_Name: Mid1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
