@@ -1,157 +1,111 @@
-# Unity Multiplayer Template - Testing Guide
+# ChatRouleMaBoule
 
-## What This Project Does
+A Unity game project built with Unity 6000.0.62f1 using the High Definition Render Pipeline (HDRP).
 
-This is a **Unity multiplayer game template** built with Unity Netcode for GameObjects (NGO). It demonstrates a simple multiplayer match system with the following features:
+## Project Overview
 
-### Core Functionality:
-1. **Metagame Menu**: Main menu where players can start matches
-2. **Match System**: Players join matches with a 60-second countdown timer
-3. **Win Condition**: Players can click a "Win" button to end the match early
-4. **Match Recap**: Shows results after a match ends
-5. **Multiplayer Support**: 
-   - Host mode (single player with bots or local multiplayer)
-   - Client mode (connect to a server)
-   - Dedicated server mode
-   - Unity Gaming Services matchmaking integration
+This is a Unity game project featuring player-controlled movement mechanics. The project uses Unity's modern Input System for handling player input.
 
-### Game Flow:
-1. Start at the **MetagameScene** (main menu)
-2. Choose to start a single-player match or use matchmaking
-3. When enough players connect (default: 2), the match begins
-4. A 60-second countdown timer starts
-5. Players can click "Win" to end the match early
-6. If the timer expires, the match ends in a draw
-7. Match recap screen shows the winner
-8. Return to the main menu
+## Features
 
-## How to Test the Project
+- **Player Movement**: Control a ball (Boule) using keyboard/gamepad input
+- **Input System**: Uses Unity's new Input System package for flexible input handling
+- **HDRP**: Built with High Definition Render Pipeline for high-quality graphics
+- **Multi-input Support**: Supports keyboard, mouse, gamepad, touch, and XR controllers
 
-### Prerequisites:
-- Unity Editor (check `ProjectSettings/ProjectVersion.txt` for the required version)
-- Unity Netcode for GameObjects package (should be in Packages)
-- Unity Gaming Services packages (for matchmaking features)
+## Prerequisites
 
-### Testing Methods:
+- **Unity Editor**: Version 6000.0.62f1 or compatible
+- **Required Packages** (automatically managed via `Packages/manifest.json`):
+  - Unity Input System (1.14.2)
+  - High Definition Render Pipeline (17.0.4)
+  - Cinemachine (2.10.4)
+  - Unity Timeline (1.8.9)
+  - Unity UI Toolkit (2.0.0)
 
-#### Method 1: Single Player Mode (Easiest)
-1. Open the project in Unity Editor
-2. Open the scene: `Assets/Scenes/MetagameScene.unity`
-3. Press **Play** in the Unity Editor
-4. In the main menu, click the **"Start Single Player"** button
-5. The game will start in Host mode with bots (if MaxPlayers > 1)
-6. You'll see the match view with a countdown timer and a "Win" button
-7. Click "Win" to test the win condition, or wait for the timer to expire
+## Project Structure
 
-#### Method 2: Local Multiplayer (Two Players)
-1. **First Instance (Host)**:
-   - Open Unity Editor
-   - Open `MetagameScene.unity`
-   - Press Play
-   - Click "Start Single Player" (this starts as Host)
-
-2. **Second Instance (Client)**:
-   - Open a second Unity Editor instance (or use Unity's Multiplayer Play Mode)
-   - Open the same project
-   - Open `MetagameScene.unity`
-   - Before pressing Play, configure the client:
-     - Go to `Window > Multiplayer > Bootstrapper` (if available)
-     - Or create/edit `StartupConfiguration.json` in the project root with:
-       ```json
-       {
-         "OverrideMultiplayerRole": "True",
-         "StartAsHost": "False",
-         "StartAsServer": "False",
-         "StartAsClient": "True",
-         "MaxPlayers": "2",
-         "Port": "9797",
-         "EnableBots": "False",
-         "AllowReconnection": "False",
-         "ServerIP": "127.0.0.1",
-         "AutoConnect": "True"
-       }
-       ```
-   - Press Play - it should auto-connect to the host
-
-#### Method 3: Using Configuration File
-The project uses `StartupConfiguration.json` for configuration. The default is located at:
-- `Assets/Resources/DefaultConfigurations/StartupConfiguration.json`
-
-You can create a `StartupConfiguration.json` in the project root to override settings:
-
-**For Host Mode:**
-```json
-{
-  "OverrideMultiplayerRole": "True",
-  "StartAsHost": "True",
-  "StartAsServer": "False",
-  "StartAsClient": "False",
-  "MaxPlayers": "2",
-  "Port": "9797",
-  "EnableBots": "True",
-  "AllowReconnection": "False",
-  "ServerIP": "127.0.0.1",
-  "AutoConnect": "True"
-}
+```
+ChatRouleMaBoule/
+├── Assets/
+│   ├── Scripts/
+│   │   └── Player.cs          # Main player controller script
+│   ├── Scenes/
+│   │   ├── level_1.unity      # Main game level
+│   │   ├── SampleScene.unity  # Sample/test scene
+│   │   └── PrefabEditingScene.unity
+│   ├── InputSystem_Actions.inputactions  # Input action definitions
+│   └── SampleSceneAssets/     # Sample assets and resources
+└── ProjectSettings/           # Unity project settings
 ```
 
-**For Client Mode:**
-```json
-{
-  "OverrideMultiplayerRole": "True",
-  "StartAsHost": "False",
-  "StartAsServer": "False",
-  "StartAsClient": "True",
-  "MaxPlayers": "2",
-  "Port": "9797",
-  "EnableBots": "False",
-  "AllowReconnection": "False",
-  "ServerIP": "127.0.0.1",
-  "AutoConnect": "True"
-}
-```
+## Getting Started
 
-**For Dedicated Server:**
-```json
-{
-  "OverrideMultiplayerRole": "True",
-  "StartAsHost": "False",
-  "StartAsServer": "True",
-  "StartAsClient": "False",
-  "MaxPlayers": "2",
-  "Port": "9797",
-  "EnableBots": "False",
-  "AllowReconnection": "False",
-  "ServerIP": "127.0.0.1",
-  "AutoConnect": "True"
-}
-```
+1. **Open the Project**:
+   - Open Unity Hub
+   - Click "Add" and select the `ChatRouleMaBoule` folder
+   - Ensure Unity 6000.0.62f1 is installed
+   - Open the project
 
-### Testing Checklist:
-- [ ] Single player mode starts correctly
-- [ ] Match countdown timer displays and counts down from 60 seconds
-- [ ] "Win" button ends the match early
-- [ ] Match recap screen shows after match ends
-- [ ] Can return to main menu after match
-- [ ] Two players can connect and play together
-- [ ] Bots spawn correctly when enabled
+2. **Run the Game**:
+   - Open the scene: `Assets/Scenes/level_1.unity` or `Assets/Scenes/SampleScene.unity`
+   - Press **Play** in the Unity Editor
+   - Use WASD or arrow keys to move the ball
 
-### Key Files to Understand:
-- `Assets/Scripts/Runtime/Game/Controllers/GameController.cs` - Main game logic
-- `Assets/Scripts/Runtime/Game/Controllers/MatchController.cs` - Match UI handling
-- `Assets/Scripts/Runtime/Shared/CustomNetworkManager.cs` - Network setup
-- `Assets/Scripts/Runtime/Metagame/Controllers/MainMenuController.cs` - Menu navigation
-- `Assets/Scenes/MetagameScene.unity` - Main scene to play
+## Controls
 
-### Troubleshooting:
-- **Can't connect**: Check that the port (default 9797) is not blocked by firewall
-- **Bots not spawning**: Ensure `EnableBots` is set to `"True"` in configuration
-- **Auto-connect not working**: Set `AutoConnect` to `"True"` in configuration
-- **Match doesn't start**: Ensure `MaxPlayers` number of players/bots are connected
+### Player Actions
 
-### Notes:
-- This is a **template project** - the actual gameplay is minimal (just a timer and win button)
-- The project structure follows MVC (Model-View-Controller) pattern
-- Uses Unity's UI Toolkit for the user interface
-- Integrates with Unity Gaming Services for cloud matchmaking (requires Unity account setup)
+- **Move**: WASD / Arrow Keys / Gamepad Left Stick
+- **Look**: Mouse / Gamepad Right Stick
+- **Attack**: Left Mouse Button / Gamepad Button West (X/Square)
+- **Jump**: Space / Gamepad Button South (A/Cross)
+- **Sprint**: Left Shift / Gamepad Left Stick Press
+- **Crouch**: C / Gamepad Button East (B/Circle)
+- **Interact**: E / Gamepad Button North (Y/Triangle) - Hold
+- **Previous**: 1 / Gamepad D-Pad Left
+- **Next**: 2 / Gamepad D-Pad Right
 
+## Key Scripts
+
+### Player.cs
+Located at `Assets/Scripts/Player.cs`
+
+The main player controller that:
+- Handles input using Unity's Input System
+- Moves a GameObject tagged "Boule" based on player input
+- Normalizes movement input for consistent speed
+
+## Input System
+
+The project uses Unity's Input System package. Input actions are defined in:
+- `Assets/InputSystem_Actions.inputactions`
+
+The generated C# code is in:
+- `Assets/InputActions.cs` (auto-generated, do not edit manually)
+
+## Scenes
+
+- **level_1.unity**: Main game level
+- **SampleScene.unity**: Sample/test scene with tutorial assets
+- **PrefabEditingScene.unity**: Scene for editing prefabs
+
+## Development Notes
+
+- The project uses HDRP (High Definition Render Pipeline) - ensure your graphics card supports it
+- Input System is enabled - the old Input Manager is disabled
+- The Player script finds a GameObject with the tag "Boule" at runtime - ensure your scene has an object with this tag
+
+## Troubleshooting
+
+- **Ball not moving**: Ensure there's a GameObject with the tag "Boule" in the scene
+- **Input not working**: Check that the Input System package is installed and the Input Actions asset is properly configured
+- **Graphics issues**: Verify HDRP is properly set up in your project settings
+
+## Unity Version
+
+This project requires Unity **6000.0.62f1** (Unity 6).
+
+## License
+
+[Add your license information here]
