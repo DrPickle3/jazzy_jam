@@ -345,6 +345,11 @@ MonoBehaviour:
   m_LightUnit: 0
   m_LuxAtDistance: 1
   m_Intensity: 0
+  m_Version: 13
+  m_ObsoleteShadowResolutionTier: 1
+  m_ObsoleteUseShadowQualitySettings: 0
+  m_ObsoleteCustomShadowResolution: 512
+  m_ObsoleteContactShadows: 0
   m_InnerSpotPercent: 0
   m_SpotIESCutoffPercent: 100
   m_LightDimmer: 1
@@ -463,11 +468,6 @@ MonoBehaviour:
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
   m_AreaLightEmissiveMeshLayer: -1
-  m_Version: 13
-  m_ObsoleteShadowResolutionTier: 1
-  m_ObsoleteUseShadowQualitySettings: 0
-  m_ObsoleteCustomShadowResolution: 512
-  m_ObsoleteContactShadows: 0
 --- !u!1001 &1563257977560405999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -515,6 +515,26 @@ PrefabInstance:
     - target: {fileID: 2357201626719713909, guid: e66e5ba8eaa46914fbcc0f2fdc85a08b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6340841425630844836, guid: e66e5ba8eaa46914fbcc0f2fdc85a08b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 6340841425630844836, guid: e66e5ba8eaa46914fbcc0f2fdc85a08b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6340841425630844836, guid: e66e5ba8eaa46914fbcc0f2fdc85a08b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9719511
+      objectReference: {fileID: 0}
+    - target: {fileID: 6340841425630844836, guid: e66e5ba8eaa46914fbcc0f2fdc85a08b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.23518308
+      objectReference: {fileID: 0}
+    - target: {fileID: 6340841425630844836, guid: e66e5ba8eaa46914fbcc0f2fdc85a08b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 27.205
       objectReference: {fileID: 0}
     - target: {fileID: 7338642991401840833, guid: e66e5ba8eaa46914fbcc0f2fdc85a08b, type: 3}
       propertyPath: m_Name
