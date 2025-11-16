@@ -12,6 +12,7 @@ namespace DefaultNamespace
     public class CoinOverlay : MonoBehaviour
     {
         [SerializeField] private GameObject canva;
+        [SerializeField] private GameObject menuCanva;
         [SerializeField] private TextMeshProUGUI text;
         private InputActions _inputActions;
 
@@ -27,6 +28,15 @@ namespace DefaultNamespace
             _inputActions = new();
         }
 
+        public void Update()
+        {
+            bool pause = _inputActions.Player.Pause.IsPressed();
+            if (pause)
+            {
+                PauseGame();
+            }
+        }
+
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             if (scene.buildIndex == 0)
@@ -37,12 +47,26 @@ namespace DefaultNamespace
             {
                 text.text = "0";
                 canva.SetActive(true);
+                _inputActions.Enable();
             }
+        }
+
+        private void PauseGame()
+        {
+            Time.timeScale = 0;
+            menuCanva.SetActive(true);
         }
 
         public void OnReturnToMenu()
         {
+            _inputActions.Disable();
             SceneManager.LoadScene(0);
+        }
+
+        public void OnResumeGame()
+        {
+            Time.timeScale = 1;
+            menuCanva.SetActive(false);
         }
 
         public void OnDestroy()
