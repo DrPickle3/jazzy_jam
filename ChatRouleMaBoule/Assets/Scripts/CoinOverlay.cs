@@ -59,6 +59,7 @@ namespace DefaultNamespace
 
         public void OnReturnToMenu()
         {
+            OnResumeGame();
             _inputActions.Disable();
             SceneManager.LoadScene(0);
         }
