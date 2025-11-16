@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
+using TMPro;
 using UnityEditor.Overlays;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,10 +11,10 @@ namespace DefaultNamespace
     public class CoinOverlay : MonoBehaviour
     {
         [SerializeField] private GameObject canva;
-        [SerializeField] private Text text;
+        [SerializeField] private TextMeshProUGUI text;
         public void Awake()
         {
-            if (SceneManager.GetActiveScene().handle == 0)
+            if (SceneManager.GetActiveScene().buildIndex == 0)
             {
                 canva.SetActive(false);
             }
@@ -23,7 +24,7 @@ namespace DefaultNamespace
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            if (scene.handle == 0)
+            if (scene.buildIndex == 0)
             {
                 canva.SetActive(false);
             }

@@ -10,7 +10,8 @@ namespace DefaultNamespace
     public class LevelManager : MonoBehaviour
     {
         private bool[] Levels { get; set; }
-        private Text _text;
+        [SerializeField]
+        private TextMeshProUGUI _text;
 
         public void Awake()
         {
