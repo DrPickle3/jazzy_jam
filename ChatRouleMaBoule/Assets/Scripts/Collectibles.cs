@@ -35,10 +35,8 @@ namespace DefaultNamespace
                 {
                     _levelManager.CoinCollected();
                 }
-<<<<<<< Updated upstream
 
                 StartCoroutine(PlayAndDestroyRoutine());
-=======
                 
                 sound.Play();
                 gameObject.SetActive(false);
@@ -47,7 +45,6 @@ namespace DefaultNamespace
                 }
 
                 Destroy(gameObject);
->>>>>>> Stashed changes
             }
         }
         
