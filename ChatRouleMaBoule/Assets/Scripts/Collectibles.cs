@@ -37,14 +37,6 @@ namespace DefaultNamespace
                 }
 
                 StartCoroutine(PlayAndDestroyRoutine());
-                
-                sound.Play();
-                gameObject.SetActive(false);
-                while (sound.isPlaying)
-                {
-                }
-
-                Destroy(gameObject);
             }
         }
         
