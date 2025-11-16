@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using TMPro;
 using UnityEditor.Overlays;
@@ -12,6 +13,8 @@ namespace DefaultNamespace
     {
         [SerializeField] private GameObject canva;
         [SerializeField] private TextMeshProUGUI text;
+        private InputActions _inputActions;
+
         public void Awake()
         {
             if (SceneManager.GetActiveScene().buildIndex == 0)
@@ -20,6 +23,8 @@ namespace DefaultNamespace
             }
             DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
+
+            _inputActions = new();
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -38,6 +43,11 @@ namespace DefaultNamespace
         public void OnReturnToMenu()
         {
             SceneManager.LoadScene(0);
+        }
+
+        public void OnDestroy()
+        {
+            _inputActions.Disable();
         }
     }
 }
