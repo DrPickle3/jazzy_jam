@@ -1,28 +1,36 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MusicManager : MonoBehaviour
+public class LevelMusic : MonoBehaviour
 {
-    private string _sceneName;
+    private static LevelMusic instance;
+    private string originalScene;
 
-    void Awake()
+    private void Awake()
     {
+        // --- Prevent duplicates ---
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
         DontDestroyOnLoad(gameObject);
-        _sceneName = SceneManager.GetActiveScene().name;
+
+        originalScene = SceneManager.GetActiveScene().name;
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == _sceneName)
+        // If same scene → player died → keep music
+        if (scene.name == originalScene)
             return;
 
-        Destroy(gameObject);
-    }
-
-    private void OnDestroy()
-    {
+        // If new scene → destroy the music object completely
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        Destroy(gameObject);
     }
 }
