@@ -5907,11 +5907,6 @@ MonoBehaviour:
   m_LightUnit: 0
   m_LuxAtDistance: 1
   m_Intensity: 0
-  m_Version: 13
-  m_ObsoleteShadowResolutionTier: 1
-  m_ObsoleteUseShadowQualitySettings: 0
-  m_ObsoleteCustomShadowResolution: 512
-  m_ObsoleteContactShadows: 0
   m_InnerSpotPercent: 0
   m_SpotIESCutoffPercent: 100
   m_LightDimmer: 1
@@ -6030,6 +6025,11 @@ MonoBehaviour:
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
   m_AreaLightEmissiveMeshLayer: -1
+  m_Version: 13
+  m_ObsoleteShadowResolutionTier: 1
+  m_ObsoleteUseShadowQualitySettings: 0
+  m_ObsoleteCustomShadowResolution: 512
+  m_ObsoleteContactShadows: 0
 --- !u!1001 &573788784
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23235,7 +23235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8428487245756648919, guid: e66e5ba8eaa46914fbcc0f2fdc85a08b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 53.959
+      value: 56
       objectReference: {fileID: 0}
     - target: {fileID: 8428487245756648919, guid: e66e5ba8eaa46914fbcc0f2fdc85a08b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -23243,7 +23243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8428487245756648919, guid: e66e5ba8eaa46914fbcc0f2fdc85a08b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.903
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 8428487245756648919, guid: e66e5ba8eaa46914fbcc0f2fdc85a08b, type: 3}
       propertyPath: m_LocalRotation.w
