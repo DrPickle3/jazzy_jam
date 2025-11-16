@@ -1,11 +1,6 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using TMPro;
-using UnityEditor.Overlays;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace DefaultNamespace
 {
@@ -15,6 +10,7 @@ namespace DefaultNamespace
         [SerializeField] private GameObject menuCanva;
         [SerializeField] private TextMeshProUGUI text;
         private InputActions _inputActions;
+        private int _coinAmount;
 
         public void Awake()
         {
@@ -26,6 +22,7 @@ namespace DefaultNamespace
             SceneManager.sceneLoaded += OnSceneLoaded;
 
             _inputActions = new();
+            _coinAmount = 0;
         }
 
         public void Update()

@@ -12,15 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4881f9a2c4d568047b316028d20a8dca, type: 3}
   m_Name: SampleScene Baking Set
   m_EditorClassIdentifier: 
-  m_SceneBakeData:
-    m_Keys:
-    - 3db1837cc97a95e4c98610966fac2b0b
-    m_Values:
-    - hasProbeVolume: 0
-      bakeScene: 1
-      bounds:
-        m_Center: {x: 8.099998, y: -2203.2002, z: 0}
-        m_Extent: {x: 72.9, y: 2235.6, z: 32.4}
   singleSceneMode: 1
   dialogNoProbeVolumeInSetShown: 0
   settings:
@@ -1299,3 +1290,12 @@ MonoBehaviour:
   skyOcclusionShadingDirection: 0
   useRenderingLayers: 0
   renderingLayerMasks: []
+  m_SceneBakeData:
+    m_Keys:
+    - 3db1837cc97a95e4c98610966fac2b0b
+    m_Values:
+    - hasProbeVolume: 0
+      bakeScene: 1
+      bounds:
+        m_Center: {x: 8.099998, y: -2203.2002, z: 0}
+        m_Extent: {x: 72.9, y: 2235.6, z: 32.4}

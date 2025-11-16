@@ -16,11 +16,9 @@ namespace DefaultNamespace
         {
             if (other == null)
                 return;
-            Debug.Log(other);
+
             if (other.CompareTag("Boule"))
             {
-                Debug.Log("ici");
-
                 if (gameObject.CompareTag("Star"))
                 {
                     _levelManager.StarCollected();

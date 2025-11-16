@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
             _catAnimator.SetBool("isMoving", true);
         }
 
-        if (transform.position.y < -1)
+        if (transform.position.y <= 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
