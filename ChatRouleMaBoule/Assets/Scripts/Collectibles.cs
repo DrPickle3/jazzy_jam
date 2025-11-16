@@ -5,6 +5,7 @@ namespace DefaultNamespace
 {
     public class Collectibles : MonoBehaviour
     {
+        [SerializeField] private AudioSource sound;
         private LevelManager _levelManager;
 
         public void Start()
@@ -27,6 +28,13 @@ namespace DefaultNamespace
                 {
                     _levelManager.CoinCollected();
                 }
+                
+                sound.Play();
+                gameObject.SetActive(false);
+                while (sound.isPlaying)
+                {
+                }
+
                 Destroy(gameObject);
             }
         }
