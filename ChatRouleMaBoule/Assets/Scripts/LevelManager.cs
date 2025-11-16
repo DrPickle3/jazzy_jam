@@ -8,6 +8,12 @@ namespace DefaultNamespace
     public class LevelManager : MonoBehaviour
     {
         private bool[] Levels { get; set; }
+
+        public void Awake()
+        {
+            DontDestroyOnLoad(this);
+        }
+        
         public void Start()
         {
             var textLevels = Resources.Load<TextAsset>("levels").text;
