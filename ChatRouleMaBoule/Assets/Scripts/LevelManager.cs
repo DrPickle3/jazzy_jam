@@ -1,5 +1,6 @@
 using System.IO;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ namespace DefaultNamespace
     public class LevelManager : MonoBehaviour
     {
         private bool[] Levels { get; set; }
+        private Text _text;
 
         public void Awake()
         {
@@ -27,7 +29,7 @@ namespace DefaultNamespace
 
         public void CoinCollected()
         {
-            // TODO : Update Score TMP
+            _text.text = $"{int.Parse(_text.text) + 1}";
         }
         
         public void StarCollected()
