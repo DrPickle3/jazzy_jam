@@ -158,6 +158,7 @@ MonoBehaviour:
       sssCustomDownsampleSteps: 0
       msaaMode: 1
       materialQuality: 0
+  m_Version: 14
   m_Settings:
     m_SettingsList:
       m_List:
@@ -264,7 +265,6 @@ MonoBehaviour:
       m_Keys:
       - 3db1837cc97a95e4c98610966fac2b0b
       m_Values: 01
-  m_Version: 14
   references:
     version: 2
     RefIds:
