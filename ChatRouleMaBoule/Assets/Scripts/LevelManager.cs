@@ -62,8 +62,14 @@ namespace DefaultNamespace
             Levels[index - 1] = true;
             
             SaveProgress();
-            
-            SceneManager.LoadScene(index + 1);
+            if (index < 3)
+            {
+                SceneManager.LoadScene(index + 1);
+            }
+            else
+            {
+                SceneManager.LoadScene(0);
+            }
         }
 
         private void SaveProgress()

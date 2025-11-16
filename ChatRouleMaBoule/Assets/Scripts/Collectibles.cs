@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace DefaultNamespace
@@ -28,15 +29,19 @@ namespace DefaultNamespace
                 {
                     _levelManager.CoinCollected();
                 }
-                
-                sound.Play();
-                gameObject.SetActive(false);
-                while (sound.isPlaying)
-                {
-                }
 
-                Destroy(gameObject);
+                StartCoroutine(PlayAndDestroyRoutine());
             }
+        }
+        
+        private IEnumerator PlayAndDestroyRoutine()
+        {
+            sound.Play();
+
+            // Wait for the clip duration safely
+            yield return new WaitWhile(() => sound.isPlaying);
+
+            Destroy(gameObject);
         }
     }
 }
