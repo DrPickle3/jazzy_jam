@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace DefaultNamespace
 {
@@ -13,8 +14,13 @@ namespace DefaultNamespace
         
         public void OnTriggerEnter(Collider other)
         {
+            if (other == null)
+                return;
+            Debug.Log(other);
             if (other.CompareTag("Boule"))
             {
+                Debug.Log("ici");
+
                 if (gameObject.CompareTag("Star"))
                 {
                     _levelManager.StarCollected();
