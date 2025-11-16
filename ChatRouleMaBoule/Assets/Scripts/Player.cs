@@ -69,4 +69,9 @@ public class Player : MonoBehaviour
     {
         _rb.AddTorque(_frwd * (10000 * _currentSpeed));
     }
+
+    public void OnDestroy()
+    {
+        _inputActions.Disable();
+    }
 }
