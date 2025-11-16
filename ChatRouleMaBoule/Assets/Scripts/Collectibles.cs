@@ -9,9 +9,15 @@ namespace DefaultNamespace
         [SerializeField] private AudioSource sound;
         private LevelManager _levelManager;
 
+        private MeshRenderer _renderer;
+        private MeshCollider _collider;
+
         public void Start()
         {
             _levelManager = FindFirstObjectByType<LevelManager>();
+            _renderer = GetComponentInChildren<MeshRenderer>();           
+            _collider = GetComponentInChildren<MeshCollider>();
+
         }
         
         public void OnTriggerEnter(Collider other)
@@ -36,6 +42,8 @@ namespace DefaultNamespace
         
         private IEnumerator PlayAndDestroyRoutine()
         {
+            _collider.enabled = false;
+            _renderer.enabled = false;
             sound.Play();
 
             // Wait for the clip duration safely
