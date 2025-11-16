@@ -3,12 +3,14 @@ using System.Linq;
 using UnityEditor.Overlays;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace DefaultNamespace
 {
     public class CoinOverlay : MonoBehaviour
     {
         [SerializeField] private GameObject canva;
+        [SerializeField] private Text text;
         public void Awake()
         {
             if (SceneManager.GetActiveScene().handle == 0)
@@ -27,6 +29,7 @@ namespace DefaultNamespace
             }
             else
             {
+                text.text = "0";
                 canva.SetActive(true);
             }
         }
